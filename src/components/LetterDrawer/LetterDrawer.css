@@ -1,0 +1,31 @@
+.drawer-box{
+    width: 50vw;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 50;
+}
+.drawer-area{
+    height: calc(100vh - 30px);
+    overflow: hidden;
+    transform: translateY(0);
+}
+.drawer-box-header{
+    height: 30px;
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.drawer-box-close{
+    color: #fff;
+    margin-right: 10px;
+    margin-top: -5px;
+    cursor: pointer;
+}
+@media screen and (max-width: 380px){
+    .drawer-box {
+        width: 100vw;
+    }
+}

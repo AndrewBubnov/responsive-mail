@@ -1,0 +1,18 @@
+.active{
+    font-weight: bold;
+}
+.active, .regular{
+    cursor: pointer;
+}
+.folder-line{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.folders{
+    width: 90px;
+    margin-top: 60px;
+}
+.unread-counter{
+    font-weight: 700;
+}

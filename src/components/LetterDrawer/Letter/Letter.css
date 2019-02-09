@@ -1,0 +1,77 @@
+.letter{
+    /*margin: 30px auto;*/
+    width: 40vw;
+    height: auto;
+}
+.letter-inner{
+    width: 38vw;
+    height: 48vh;
+    margin: auto;
+}
+.letter-title {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.service-line{
+    color: #a0a0a0;
+    width: 60px;
+}
+.answer-letter{
+    resize: none;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+}
+.letter-title .back-icon {
+    background-size: cover;
+    width: 19px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: auto;
+}
+.icon-answered{
+    background: url("../../MailList/img/recycle1.svg") center center no-repeat;
+}
+.letter-buttons{
+    border-radius: 5px;
+    border: none;
+    width: 15%;
+    height: 7%;
+}
+.letter-buttons:focus{
+    outline: none;
+}
+.ignore-button{
+    margin-left: 100px;
+    background-color: transparent;
+    border: 1px solid #a0a0a0;
+    color: #a0a0a0;
+}
+.send-button{
+    background-color: #a0a0a0;
+    color: #fff;
+}
+.ignore-only{
+    margin-left: 0;
+}
+
+@media screen and (max-width: 380px){
+    .letter{
+       width: 100%;
+    }
+    .letter-inner{
+        width: 98%;
+        height: auto;
+    }
+    .answer-letter {
+        width: 98%;
+    }
+    .incoming-letter{
+        height: 30vh;
+        overflow: scroll;
+    }
+}

@@ -1,0 +1,38 @@
+/*.drawer{*/
+    /*background-color: #dddddd;*/
+    /*height: 100%;*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);*/
+    /*width: 70%;*/
+    /*max-width: 300px;*/
+    /*z-index: 150;*/
+    /*transform: translateX(-101%);*/
+    /*transition: transform .5s ease-in-out;*/
+/*}*/
+/*.drawer.open{*/
+    /*transform: translateX(0);*/
+/*}*/
+.drawer{
+    background-color: #dddddd;
+    width: 100%;
+    position: fixed;
+    top: -150px;
+    left: 0;
+    box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
+    height: 150px;
+    z-index: 150;
+    transition: transform .5s ease-in-out;
+}
+.drawer.open{
+    transform: translateY(150px);
+}
+.drawer-cross{
+    color: #555555;
+    position: relative;
+    top: 20px;
+    left: 80%;
+    font-size: 25px;
+    cursor: pointer;
+}
