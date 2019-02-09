@@ -23,9 +23,9 @@ class App extends Component {
                 <Transition
                 native
                 items = {this.props.emails.writingLetter}
-                from = {{opacity: 1, position: 'absolute', left: '10vw', top: '0vh'}}
-                enter = {{opacity: 1, position: 'absolute', left: '10vw', top: '15vh'}}
-                leave = {{opacity: 0, position: 'absolute', left: '10vw', top: '0vh'}}
+                from = {{opacity: 1, position: 'absolute', left: '0vw', top: '0vh'}}
+                enter = {{opacity: 1, position: 'absolute', left: '0vw', top: '15vh'}}
+                leave = {{opacity: 0, position: 'absolute', left: '0vw', top: '0vh'}}
                 >
                     {show => show && (props =>(
                         <animated.div style ={props}>
