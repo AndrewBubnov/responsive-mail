@@ -8,6 +8,7 @@ import DrawerButton from "./components/DrawerButton/DrawerButton";
 import './App.css';
 import {connect} from 'react-redux'
 import { writeLetter } from "./actions/mailCreators";
+import Drawer from "./components/Drawer/Drawer";
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
             <Fragment>
                 {window.innerWidth <= 380 && <div className="header">{active}</div>}
                 <DrawerButton/>
+                <Drawer/>
                 <button onClick={() => this.props.writeLetter(this.props.emails.newLetter, true)}
                         className="new-message-button">{window.innerWidth > 380 ? 'New letter' : '+'}</button>
 

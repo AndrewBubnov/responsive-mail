@@ -13,7 +13,7 @@ class LetterType extends Component {
                 key={item.id}
                 onClick={() => this.props.changeFolder(item.id)}
                 className={classN}>
-                <span className="folder-line"><div>{item.name}</div>
+                <span className="folder-line"><div className="folder-name">{item.name}</div>
                     <div className="unread-counter">{item.id === 'received' && unRead > 0 && unRead}</div>
                 </span>
             </li>)

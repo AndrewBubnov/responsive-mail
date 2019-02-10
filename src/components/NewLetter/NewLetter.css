@@ -1,8 +1,6 @@
 .new-letter{
     width: 400px;
-    /*height: 300px;*/
     background-color: #fff;
-    /*border: 1px solid red;*/
     position: absolute;
     z-index: 100;
     /*top: 15vh;*/
@@ -59,4 +57,9 @@
 .new-letter-form-align{
     width: 70px;
     display: inline-block;
+}
+@media screen and (max-width: 380px){
+    .new-letter {
+        width: 100vw;
+    }
 }

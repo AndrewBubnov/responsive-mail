@@ -48,6 +48,7 @@ export const newLetterClose = () => dispatch => {
 
 export const changeFolder = (folderId) => dispatch => {
     dispatch ({type: CHANGE_FOLDER, payload: folderId})
+    dispatch({type: MENU_TOGGLE, payload: false})
 }
 //***************************
 
