@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/responsive-mail/static/js/runtime~main.93dbe78a.js"
   },
   {
-    "revision": "318a3997c141ae1344b7",
-    "url": "/responsive-mail/static/js/main.318a3997.chunk.js"
+    "revision": "43ac9f2f36a0dce38cd6",
+    "url": "/responsive-mail/static/js/main.43ac9f2f.chunk.js"
   },
   {
     "revision": "06dd3dda81e1c95d11cb",
     "url": "/responsive-mail/static/js/1.06dd3dda.chunk.js"
   },
   {
-    "revision": "318a3997c141ae1344b7",
-    "url": "/responsive-mail/static/css/main.ced6dcc2.chunk.css"
+    "revision": "43ac9f2f36a0dce38cd6",
+    "url": "/responsive-mail/static/css/main.a0709874.chunk.css"
   },
   {
-    "revision": "aeda1eb5c879d91de95c813da4576e30",
+    "revision": "cd849ee471962eb7b5efa64c247b0b98",
     "url": "/responsive-mail/index.html"
   }
 ];
