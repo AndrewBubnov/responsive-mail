@@ -12,7 +12,7 @@ const initialState = {
                 checked: false,
                 from: 'admin@reactjs.org',
                 to: '',
-                subject: 'Try React!',
+                subject: 'Try React and send us reply!',
                 text: 'React - JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.' +
                     'React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.' +
                     ' React может использоваться для разработки одностраничных и мобильных приложений. Его цель — предоставить высокую ' +

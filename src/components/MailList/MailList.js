@@ -25,6 +25,9 @@ class MailList extends Component {
             currentMailList = Array.from(set).map((item) => {
                 let letter = item.from || item.to
                 letter = letter + ' - ' + item.subject
+                if (window.innerWidth < 380 && letter.length > 34){
+                    letter = letter.substring(0, 32) + '...'
+                }
                 const index = letter.indexOf(search)
             return (<li key={item.id}>
                     <div className="letter-wrapper">
@@ -39,12 +42,14 @@ class MailList extends Component {
                                     {window.innerWidth > 380 && active === 'received' && <div className={item.answered ? "back-icon icon-answered" : "back-icon"}>
                                     </div>}
                                     <span className="date">{new Date(item.id).toString().split(' ').splice(1,3).join('-')}</span>
-                                    <span onClick={() => this.props.readLetter(item, mailList, unRead)}
+
+                                    {window.innerWidth > 380 ? <span onClick={() => this.props.readLetter(item, mailList, unRead)}
                                           className={textShow === item.id ? "letter-name name-blurred" : "letter-name"} >
                                         {index > 0 && <span>{letter.substring(0, index)}</span>}
                                         <span className="marked">{letter.substring(index, index + search.length)}</span>
                                         <span>{letter.substring(index + search.length)}</span>
-                                    </span>
+                                        </span> : <span onClick={() => this.props.readLetter(item, mailList, unRead)} className="letter-name">{letter}</span>}
+
                                     {textShow === item.id && <span className="letter-text">{item.text}</span>}
                                 </div>
                             </div>
