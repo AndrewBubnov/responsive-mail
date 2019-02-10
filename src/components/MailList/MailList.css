@@ -149,6 +149,7 @@
         border-left: none;
         border-right: none;
         border-top: none;
+        height: 40px;
     }
     .letter-name{
         font-size: 14px;
