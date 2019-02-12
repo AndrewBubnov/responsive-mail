@@ -108,6 +108,7 @@ const initialState = {
     search: '',
     groupCheck: false,
     topMenuOpen: false,
+
 }
 
 function mails (state = initialState, action) {

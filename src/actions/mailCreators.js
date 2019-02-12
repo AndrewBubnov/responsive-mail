@@ -191,6 +191,7 @@ export const groupCheck = (mailList, active, checkboxesArray, check) => dispatch
 export const topMenuToggle = (topMenuOpen) => dispatch => {
     dispatch({type: MENU_TOGGLE, payload: !topMenuOpen})
 }
+//********************************
 
 
 

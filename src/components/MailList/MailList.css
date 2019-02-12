@@ -12,7 +12,7 @@
 .table-line{
     width: 90%;
     border: 1px solid #dddddd;
-    min-height: 30px;
+    min-height: 40px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
 .no-letters{
     border: 1px solid #dddddd;
     width: calc(90% + 60px);
-    min-height: 30px;
+    min-height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +51,7 @@
     transform-origin: right;
     font-weight: 200;
     height: auto;
-    max-height: 30px;
+    max-height: 40px;
     width: 70%;
     overflow: hidden;
     margin-right: 0;
@@ -59,7 +59,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    line-height: 30px;
+    line-height: 40px;
     color: #fff;
 }
 @keyframes paragraph {
@@ -149,18 +149,23 @@
         border-left: none;
         border-right: none;
         border-top: none;
-        height: 40px;
+        min-height: 50px;
     }
     .letter-name{
-        font-size: 14px;
+        font-size: 16px;
+        line-height: 50px;
+        transform: translateY(1px);
     }
     .date{
         width: 80px;
+        margin-left: 10px;
+        transform: translateY(2px);
     }
     .no-letters {
         border-left: none;
         border-right: none;
         width: 100%;
         margin-top: 0;
+        min-height: 50px;
     }
 }

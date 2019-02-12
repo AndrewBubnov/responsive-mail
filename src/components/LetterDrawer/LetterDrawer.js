@@ -20,7 +20,7 @@ class LetterDrawer extends Component{
                 native
                 items = {this.props.emails.letterIsShown}
                 from = {{opacity: 1, position: 'absolute', left: leftOffset + 'vw', top: '100vh'}}
-                enter = {{opacity: 1, position: 'absolute', left: leftOffset + 'vw', top: '10vh'}}
+                enter = {{opacity: 1, position: 'absolute', left: leftOffset + 'vw', top: '5vh'}}
                 leave = {{opacity: 0, position: 'absolute', left: leftOffset + 'vw', top: '-100vh'}}
                 config = {{duration: 500}}
             >

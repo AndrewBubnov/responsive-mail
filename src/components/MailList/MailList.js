@@ -12,11 +12,13 @@ class MailList extends Component {
     componentDidMount() {
         this.props.setUnRead(this.props.emails.mailList['received'])
     }
-
+handleTouch = (start, item, e) => {
+       if (e.touches[0].clientX - start > window.innerWidth/3) this.props.deleteLetter(this.props.emails, [item])
+}
 
     render(){
         const { mailList, active, drawerIsOpen, textShow, unRead, checkboxesArray, search, groupCheck } = this.props.emails
-
+        let start = 0
         let currentMailList= null
         if (mailList[active].length > 0){
             const set = new Set(mailList[active].filter(element => element.from.includes(search)))
@@ -25,20 +27,24 @@ class MailList extends Component {
             currentMailList = Array.from(set).map((item) => {
                 let letter = item.from || item.to
                 letter = letter + ' - ' + item.subject
-                if (window.innerWidth < 380 && letter.length > 34){
-                    letter = letter.substring(0, 32) + '...'
+                if (window.innerWidth < 380 && letter.length > 33){
+                    letter = letter.substring(0, 31) + '...'
                 }
                 const index = letter.indexOf(search)
             return (<li key={item.id}>
                     <div className="letter-wrapper">
+
                         {window.innerWidth > 380 && <input onChange={(e) => this.props.handleCheckboxes(item, checkboxesArray, mailList, active, groupCheck, e)}
                                                            checked={item.checked} className="letter-checkbox" type="checkbox"/>}
                         <div className="table-line">
                             <div className={item.status ? null : 'active-letter'}>
-                                <div className="letter-line" onMouseEnter={window.innerWidth > 380 ? () => this.props.letterTextShow(item.id) : null}
+                                <div className="letter-line"
+                                     onTouchStart={(e) => {start = e.touches[0].clientX}}
+                                     onTouchMove={(e) => this.handleTouch(start, item, e)}
+                                     onMouseEnter={window.innerWidth > 380 ? () => this.props.letterTextShow(item.id) : null}
                                      onMouseLeave={window.innerWidth > 380 ? () => this.props.letterTextShow(0) : null}>
-                                    <div onClick={() => this.props.deleteLetter(this.props.emails, [item])} className="delete-letter-button">
-                                    </div>
+                                    {window.innerWidth > 380 && <div onClick={() => this.props.deleteLetter(this.props.emails, [item])} className="delete-letter-button">
+                                    </div>}
                                     {window.innerWidth > 380 && active === 'received' && <div className={item.answered ? "back-icon icon-answered" : "back-icon"}>
                                     </div>}
                                     <span className="date">{new Date(item.id).toString().split(' ').splice(1,3).join('-')}</span>
