@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/responsive-mail/precache-manifest.ec8baf255ca2ee4bb61bf457ced65555.js"
+  "/responsive-mail/precache-manifest.0f76d6bb414ae953d7fbb92dd1796e57.js"
 );
 
 workbox.clientsClaim();
