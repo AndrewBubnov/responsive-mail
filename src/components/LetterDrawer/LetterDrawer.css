@@ -10,6 +10,7 @@
     height: calc(100vh - 30px);
     overflow: hidden;
     transform: translateY(0);
+
 }
 .drawer-box-header{
     height: 50px;
@@ -28,5 +29,9 @@
 @media screen and (max-width: 380px){
     .drawer-box {
         width: 100vw;
+        height: auto;
+    }
+    .drawer-area{
+        overflow: scroll;
     }
 }
