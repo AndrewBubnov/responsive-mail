@@ -12,13 +12,14 @@ class MailList extends Component {
     componentDidMount() {
         this.props.setUnRead(this.props.emails.mailList['received'])
     }
-handleTouch = (start, item, e) => {
+handleTouch = (start, item, mailList, unRead, e) => {
        if (e.touches[0].clientX - start > window.innerWidth/3) this.props.deleteLetter(this.props.emails, [item])
+       if (start - e.touches[0].clientX > window.innerWidth/3) this.props.readLetter(item, mailList, unRead)
 }
 
     render(){
         const { mailList, active, drawerIsOpen, textShow, unRead, checkboxesArray, search, groupCheck } = this.props.emails
-        let start = 0
+        let startTouch = 0
         let currentMailList= null
         if (mailList[active].length > 0){
             const set = new Set(mailList[active].filter(element => element.from.includes(search)))
@@ -39,8 +40,8 @@ handleTouch = (start, item, e) => {
                         <div className="table-line">
                             <div className={item.status ? null : 'active-letter'}>
                                 <div className="letter-line"
-                                     onTouchStart={(e) => {start = e.touches[0].clientX}}
-                                     onTouchMove={(e) => this.handleTouch(start, item, e)}
+                                     onTouchStart={(e) => {startTouch = e.touches[0].clientX}}
+                                     onTouchMove={(e) => this.handleTouch(startTouch, item, mailList, unRead, e)}
                                      onMouseEnter={window.innerWidth > 380 ? () => this.props.letterTextShow(item.id) : null}
                                      onMouseLeave={window.innerWidth > 380 ? () => this.props.letterTextShow(0) : null}>
                                     {window.innerWidth > 380 && <div onClick={() => this.props.deleteLetter(this.props.emails, [item])} className="delete-letter-button">

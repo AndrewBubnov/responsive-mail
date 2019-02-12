@@ -7,11 +7,18 @@ import {drawerClose } from '../../actions/mailCreators'
 import './LetterDrawer.css'
 
 class LetterDrawer extends Component{
+    handleTouch = (start, e) => {
+        if (e.touches[0].clientX - start > window.innerWidth/3) this.props.drawerClose()
+    }
 
     render(){
         const leftOffset = window.innerWidth > 380 ? 5 : 0
+        let startTouch = 0
         return (
-            <div className="drawer-box">
+            <div className="drawer-box"
+                 onTouchStart={(e) => {startTouch = e.touches[0].clientX}}
+                 onTouchMove={(e) => this.handleTouch(startTouch, e)}
+            >
                 <div className="drawer-box-header">
                     <div onClick={this.props.drawerClose} className="drawer-box-close">&#10006;</div>
                 </div>
