@@ -39,6 +39,7 @@
   .main-region ul{
     margin-left: 0;
     margin-top: 50px;
+    overflow: hidden;
   }
   .new-message-button{
     width: 45px;

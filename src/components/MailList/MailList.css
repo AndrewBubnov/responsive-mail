@@ -150,7 +150,7 @@
         border-right: none;
         border-top: none;
         min-height: 50px;
-    }
+     }
     .letter-name{
         font-size: 16px;
         line-height: 50px;
@@ -168,4 +168,5 @@
         margin-top: 0;
         min-height: 50px;
     }
+
 }
