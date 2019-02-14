@@ -123,7 +123,7 @@ handleEnd = () => {
 render() {
     const {letter, index, item} = this.props
     const {mailList, active, textShow, unRead, checkboxesArray, search, groupCheck} = this.props.emails
-    const desktop = window.innerWidth > 380
+    const desktop = window.innerWidth > 710
     const style = this.state.back ? {transform: `translateX(${this.state.offset}px)`, transition: `transform .3s ease-in-out`} : {transform: `translateX(${this.state.offset}px)`}
 
 

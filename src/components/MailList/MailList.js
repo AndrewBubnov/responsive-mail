@@ -173,15 +173,15 @@ class MailList extends Component {
                     <div className="no-letters">No letters in this folder so far</div>
                 </li>
             )}
-        const drawerOffset = window.innerWidth > 380 ? 50 : 0
+        const drawerOffset = window.innerWidth > 710 ? 50 : 0
 
         return (
             <Fragment>
                 <div className="mail-list">
 
-                    {window.innerWidth > 380 && mailList[active].length > 0 && <button onClick={() => this.props.deleteLetterGroup(this.props.emails, checkboxesArray)}
+                    {window.innerWidth > 710 && mailList[active].length > 0 && <button onClick={() => this.props.deleteLetterGroup(this.props.emails, checkboxesArray)}
                                                                                        className={checkboxesArray[active].length > 0 ? "delete-chosen chosen-active" : "delete-chosen"}>Delete</button>}
-                    {window.innerWidth > 380 && mailList[active].length > 0 && <input onChange={() => this.props.groupCheck(mailList, active, checkboxesArray, groupCheck)} checked={groupCheck}
+                    {window.innerWidth > 710 && mailList[active].length > 0 && <input onChange={() => this.props.groupCheck(mailList, active, checkboxesArray, groupCheck)} checked={groupCheck}
                                                                                       className="letter-checkbox group-checkbox" type="checkbox"/>}
 
                     <ul>

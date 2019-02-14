@@ -13,14 +13,15 @@ import Drawer from "./components/Drawer/Drawer";
 
 class App extends Component {
    render() {
-       const active = this.props.emails.active.substring(0,1).toLocaleUpperCase() + this.props.emails.active.substring(1)
+        const active = this.props.emails.active.substring(0,1).toLocaleUpperCase() + this.props.emails.active.substring(1)
+       const desktop = window.innerWidth > 710
         return (
             <Fragment>
-                {window.innerWidth <= 380 && <div className="header">{active}</div>}
+                {!desktop && <div className="header">{active}</div>}
                 <DrawerButton/>
                 <Drawer/>
                 <button onClick={() => this.props.writeLetter(this.props.emails.newLetter, true)}
-                        className="new-message-button">{window.innerWidth > 380 ? 'New letter' : '+'}</button>
+                        className="new-message-button">{window.innerWidth > 710 ? 'New letter' : '+'}</button>
 
                 <Transition
                 native
@@ -38,9 +39,9 @@ class App extends Component {
 
                 <div className="main-region">
 
-                    {window.innerWidth > 380 && <LetterType />}
+                    {desktop && <LetterType />}
                     <div className="list-wrapper">
-                        {window.innerWidth > 380 && <Search/>}
+                        {desktop && <Search/>}
                     <MailList />
                     </div>
                 </div>

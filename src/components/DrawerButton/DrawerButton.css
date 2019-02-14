@@ -85,17 +85,7 @@
     50%, 100% {opacity: 1}
 }
 
-
-
-
-
-
-
-
-
-
-
-@media screen and (min-width: 381px){
+@media screen and (min-width: 710px){
     .hamburger-button, .hamburger{
         display: none;
     }

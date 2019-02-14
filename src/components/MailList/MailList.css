@@ -48,7 +48,7 @@
 .group-checkbox{
     margin-left: 15px;
 }
-@media screen and (max-width: 380px){
+@media screen and (max-width: 710px){
     .mail-list{
         width: 100%;
         margin-left: 0;

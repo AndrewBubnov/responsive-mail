@@ -21,7 +21,7 @@ class NewLetter extends Component{
                     <label><div className="new-letter-form-align">Theme</div>
                         <input type="text" onChange={(e) => this.props.fillElement(e, newLetter)} name="subject" defaultValue={reSubject}/>
                     </label>
-                    <textarea onChange={(e) => this.props.fillElement(e, newLetter)} name="text" rows="20" cols="50">
+                    <textarea onChange={(e) => this.props.fillElement(e, newLetter)} name="text" rows="10" cols="50">
                     </textarea>
                     <button onClick={() => this.props.newLetterSend(this.props.emails, true)}>Send</button>
                 </div>

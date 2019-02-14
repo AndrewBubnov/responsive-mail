@@ -16,7 +16,7 @@
 .unread-counter{
     font-weight: 700;
 }
-@media screen and (max-width: 380px){
+@media screen and (max-width: 710px){
     .folders{
         margin-top: 30px;
         width: 100%;

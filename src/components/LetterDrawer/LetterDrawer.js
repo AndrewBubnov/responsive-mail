@@ -12,7 +12,7 @@ class LetterDrawer extends Component{
     }
 
     render(){
-        const leftOffset = window.innerWidth > 380 ? 5 : 0
+        const leftOffset = window.innerWidth > 710 ? 5 : 0
         let startTouch = 0
         return (
             <div className="drawer-box"
@@ -27,7 +27,7 @@ class LetterDrawer extends Component{
                 native
                 items = {this.props.emails.letterIsShown}
                 from = {{opacity: 1, position: 'absolute', left: leftOffset + 'vw', top: '100vh'}}
-                enter = {{opacity: 1, position: 'absolute', left: leftOffset + 'vw', top: '8vh'}}
+                enter = {{opacity: 1, position: 'absolute', left: leftOffset + 'vw', top: '10vh'}}
                 leave = {{opacity: 0, position: 'absolute', left: leftOffset + 'vw', top: '-100vh'}}
                 config = {{duration: 500}}
             >

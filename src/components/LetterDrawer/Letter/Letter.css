@@ -25,6 +25,9 @@
     border: 1px solid #dddddd;
     margin-top: 10px;
 }
+.answer-letter:focus{
+    outline: 1px solid #FF6347;
+}
 .letter-title .back-icon {
     background-size: cover;
     width: 19px;
@@ -60,7 +63,7 @@
     margin-left: 0;
 }
 
-@media screen and (max-width: 380px){
+@media screen and (max-width: 710px){
     .letter{
        width: 100%;
        margin-bottom: 50px;
