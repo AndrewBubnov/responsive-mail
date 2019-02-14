@@ -1,14 +1,14 @@
 {
-  "main.css": "/responsive-mail/static/css/main.7b55542f.chunk.css",
-  "main.js": "/responsive-mail/static/js/main.6afc80a7.chunk.js",
-  "main.js.map": "/responsive-mail/static/js/main.6afc80a7.chunk.js.map",
+  "main.css": "/responsive-mail/static/css/main.9d996276.chunk.css",
+  "main.js": "/responsive-mail/static/js/main.ff59627d.chunk.js",
+  "main.js.map": "/responsive-mail/static/js/main.ff59627d.chunk.js.map",
   "static/js/1.06dd3dda.chunk.js": "/responsive-mail/static/js/1.06dd3dda.chunk.js",
   "static/js/1.06dd3dda.chunk.js.map": "/responsive-mail/static/js/1.06dd3dda.chunk.js.map",
   "runtime~main.js": "/responsive-mail/static/js/runtime~main.93dbe78a.js",
   "runtime~main.js.map": "/responsive-mail/static/js/runtime~main.93dbe78a.js.map",
-  "static/css/main.7b55542f.chunk.css.map": "/responsive-mail/static/css/main.7b55542f.chunk.css.map",
+  "static/css/main.9d996276.chunk.css.map": "/responsive-mail/static/css/main.9d996276.chunk.css.map",
   "static/media/SingleLetter.css": "/responsive-mail/static/media/trashcan.1698fab7.svg",
   "index.html": "/responsive-mail/index.html",
-  "precache-manifest.6977fc9c5cdfa5be076ac02efb83b924.js": "/responsive-mail/precache-manifest.6977fc9c5cdfa5be076ac02efb83b924.js",
+  "precache-manifest.4b5a76ed579b9699da257cc10d56ef3e.js": "/responsive-mail/precache-manifest.4b5a76ed579b9699da257cc10d56ef3e.js",
   "service-worker.js": "/responsive-mail/service-worker.js"
 }
