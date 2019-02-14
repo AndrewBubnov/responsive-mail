@@ -2,7 +2,8 @@ import { WRITE_LETTER, CHANGE_FOLDER, LETTER_FIELD_FILL, LETTER_LIST, LETTER_SHO
     TEXT_SHOW, SET_UNREAD, DRAWER_OPEN, SET_DELAY, CHECKBOXES_HANDLE, SET_SEARCH, GROUP_CHECK, MENU_TOGGLE } from './mails'
 //***********************
 
-export const deleteLetter = (emails, itemList) => dispatch => {
+export const deleteLetter = (emails, itemList) => {
+    return (dispatch) => {
     const {mailList, active, checkboxesArray} = emails
     dispatch({type: LETTER_SHOWN, payload: false})
     dispatch(setDelay(500))
@@ -26,6 +27,7 @@ export const deleteLetter = (emails, itemList) => dispatch => {
         dispatch({type: CHECKBOXES_HANDLE, payload: checkboxesArray})
     }
     dispatch({type: GROUP_CHECK, payload: false})
+    }
 }
 //***********************
 

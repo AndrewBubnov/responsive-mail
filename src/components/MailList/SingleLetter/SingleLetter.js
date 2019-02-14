@@ -96,7 +96,8 @@ import {
     readLetter,
     reverseMessage,
     setUnRead
-} from "../../actions/mailCreators";
+} from "../../../actions/mailCreators";
+import './SingleLetter.css'
 
 
 class SingleLetter extends Component{
@@ -158,6 +159,7 @@ render() {
                                                         className="letter-name">{letter}</span>}
 
                         {textShow === item.id && <span className="letter-text">{item.text}</span>}
+
                     </div>
                 </div>
             </div>

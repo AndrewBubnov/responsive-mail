@@ -1,90 +1,6 @@
-.hidden{
-    display: none;
-}
-.active-letter {
-    font-weight: 700;
-}
 .mail-list{
     width: 90%;
     margin-left: 100px;
-}
-
-.table-line{
-    width: 90%;
-    border: 1px solid #dddddd;
-    min-height: 40px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.letter-wrapper{
-    display: flex;
-    align-items: center;
-}
-.letter-line{
-    display: flex;
-    align-items: center;
-}
-.no-letters{
-    border: 1px solid #dddddd;
-    width: calc(90% + 60px);
-    min-height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #a8a8a8;
-    margin-top: 55px;
-}
-.letter-name{
-    cursor: pointer;
-    overflow: hidden;
-    transform: translateY(-2px);
-}
-.name-blurred{
-    color: #cccccc;
-    filter: blur(1px);
-}
-.letter-text{
-    background-color: #a8a8a8;
-    animation: paragraph .5s 1 ease-in-out;
-    transform-origin: right;
-    font-weight: 200;
-    height: auto;
-    max-height: 40px;
-    width: 70%;
-    overflow: hidden;
-    margin-right: 0;
-    margin-left: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    line-height: 40px;
-    color: #fff;
-}
-@keyframes paragraph {
-    from {transform: scaleX(0)}
-    to {transform: scaleY(1)}
-}
-.back-icon {
-    background-size: cover;
-    width: 19px;
-    height: 16px;
-    display: inline-block;
-    margin-right: 10px;
-}
-.icon-answered{
-    background: url("./img/recycle1.svg") center center no-repeat;
-}
-
-.delete-letter-button{
-    background: url("./img/trashcan.svg") center center no-repeat;
-    background-size: cover;
-    width: 13px;
-    height: 16px;
-    margin-right: 10px;
-    margin-left: 5px;
-    cursor: pointer;
 }
 .delete-chosen{
     color: #eee;
@@ -132,41 +48,9 @@
 .group-checkbox{
     margin-left: 15px;
 }
-.date{
-    font-weight: 200;
-    font-size: 14px;
-    transform: translateY(-1px);
-    margin-right: 10px;
-    color: #A8A8A8;
-}
 @media screen and (max-width: 380px){
     .mail-list{
         width: 100%;
         margin-left: 0;
     }
-    .table-line{
-        width: 100%;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        min-height: 50px;
-     }
-    .letter-name{
-        font-size: 16px;
-        line-height: 50px;
-        transform: translateY(1px);
-    }
-    .date{
-        width: 80px;
-        margin-left: 10px;
-        transform: translateY(2px);
-    }
-    .no-letters {
-        border-left: none;
-        border-right: none;
-        width: 100%;
-        margin-top: 0;
-        min-height: 50px;
-    }
-
 }

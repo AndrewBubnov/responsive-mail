@@ -138,7 +138,7 @@ import './MailList.css'
 import Drawer from "../LetterDrawer/LetterDrawer";
 import {connect} from 'react-redux'
 import { deleteLetter, reverseMessage, readLetter, letterTextShow, setUnRead, handleCheckboxes, deleteLetterGroup, groupCheck } from '../../actions/mailCreators'
-import SingleLetter from "../SingleLetter/SingleLetter";
+import SingleLetter from "./SingleLetter/SingleLetter";
 
 
 
