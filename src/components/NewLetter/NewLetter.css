@@ -43,6 +43,7 @@
     border: none;
     outline: none;
     border-bottom: 1px solid #ddd;
+    line-height: 25px;
 }
 .new-letter-form textarea{
     margin-top: 25px;
@@ -55,9 +56,16 @@
 .new-letter-form-align{
     width: 70px;
     display: inline-block;
+    transform: translateY(-4px);
 }
+
 @media screen and (max-width: 710px){
     .new-letter {
         width: 100vw;
+    }
+    .letter-send{
+        background-color: transparent;
+        border: 2px solid #FF6347;
+        color: #FF6347;
     }
 }

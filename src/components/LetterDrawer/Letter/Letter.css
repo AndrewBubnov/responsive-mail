@@ -26,7 +26,7 @@
     margin-top: 10px;
 }
 .answer-letter:focus{
-    outline: 1px solid #FF6347;
+    outline: 1px solid #a0a0a0;
 }
 .letter-title .back-icon {
     background-size: cover;
@@ -51,12 +51,12 @@
 .ignore-button{
     margin-left: 100px;
     background-color: transparent;
-    border: 1px solid #FF6347;
-    color: #FF6347;
+    border: 1px solid #a0a0a0;
+    color: #a0a0a0;
 }
 .send-button{
-    background-color: #FF6347;
-    border: 1px solid #FF6347;
+    background-color: #a0a0a0;
+    border: 1px solid #a0a0a0;
     color: #fff;
 }
 .ignore-only{
@@ -80,6 +80,18 @@
         overflow: scroll;
     }
     .letter-buttons{
-        width: auto;
+        width: 20vw;
+        height: 3.5vh;
+    }
+    .send-button {
+        background-color: #FF6347;
+        border: 1px solid #FF6347;
+    }
+    .ignore-button{
+        border: 1px solid #FF6347;
+        color: #FF6347;
+    }
+    .answer-letter:focus{
+        outline: 1px solid #FF6347;
     }
 }

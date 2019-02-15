@@ -22,6 +22,7 @@
   font-family: sans-serif;
   border-radius: 5px;
   cursor: pointer;
+  position: absolute;
 }
 .new-message-button:focus{
   outline: none;

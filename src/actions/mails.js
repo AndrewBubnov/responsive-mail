@@ -18,5 +18,7 @@ export const CHECKBOXES_HANDLE = 'CHECKBOXES_HANDLE'
 export const SET_SEARCH = 'SET_SEARCH'
 export const GROUP_CHECK = 'GROUP_CHECK'
 export const MENU_TOGGLE = 'MENU_TOGGLE'
+export const SET_FETCHING = 'SET_FETCHING'
+
 
 

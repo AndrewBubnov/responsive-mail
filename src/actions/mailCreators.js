@@ -1,4 +1,4 @@
-import { WRITE_LETTER, CHANGE_FOLDER, LETTER_FIELD_FILL, LETTER_LIST, LETTER_SHOWN, CURRENT_LETTER,
+import { WRITE_LETTER, CHANGE_FOLDER, LETTER_FIELD_FILL, LETTER_LIST, LETTER_SHOWN, CURRENT_LETTER, SET_FETCHING,
     TEXT_SHOW, SET_UNREAD, DRAWER_OPEN, SET_DELAY, CHECKBOXES_HANDLE, SET_SEARCH, GROUP_CHECK, MENU_TOGGLE } from './mails'
 //***********************
 
@@ -59,8 +59,10 @@ export const fillElement = (e, newLetter) => dispatch => {
 }
 //****************************
 
-export const newLetterSend = (emails, newLetter) => dispatch => {
+export const newLetterSend = (emails, realLetter) => dispatch => {
     const letter = emails.newLetter
+    const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regexp.test(String(letter.to).toLowerCase())){
     if (letter.answered) {
         const newReceived = emails.mailList.received.map(item => {
             if (item.id === letter.id) {
@@ -70,12 +72,33 @@ export const newLetterSend = (emails, newLetter) => dispatch => {
         })
         dispatch({type: LETTER_LIST, payload: {...emails.mailList, 'received': newReceived}})
     }
-    const newSubject = {to: letter.to, subject: letter.subject, text: letter.text}
+    const subject = letter.subject === '' ? 'No subject' : letter.subject
+    const newSubject = {to: letter.to, subject, text: letter.text}
     const newObj ={id: Date.now(), status: true, checked: false, from: '', ...newSubject}
     const sent = [...emails.mailList.sent, newObj]
     let tempList = {...emails.mailList, sent}
     dispatch({type: LETTER_LIST, payload: {...emails.mailList, sent}})
-    dispatch(letterScroll(emails, tempList, newLetter))
+    dispatch(letterScroll(emails, tempList, realLetter))
+        if (realLetter){
+            const object = {
+                to: letter.to,
+                subject: letter.subject,
+                text: letter.text,
+            };
+            fetch(`http://localhost:3000/`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(object)
+            })
+
+        }
+    }
+    else {
+        dispatch({type: LETTER_FIELD_FILL, payload:{...letter, 'to': 'Please enter valid email address'}})
+    }
 }
 //******************************
 
@@ -194,6 +217,17 @@ export const topMenuToggle = (topMenuOpen) => dispatch => {
     dispatch({type: MENU_TOGGLE, payload: !topMenuOpen})
 }
 //********************************
+
+export const setMail = (mailList) => dispatch => {
+    dispatch({type: SET_FETCHING, payload: true})
+    fetch(`http://localhost:3000/api/`)
+        .then(result => result.json())
+        .then(data => {
+            dispatch({type: LETTER_LIST, payload: {...mailList, 'received': data}})
+            dispatch({type: SET_FETCHING, payload: false})
+            dispatch(setUnRead(data))
+        })
+}
 
 
 

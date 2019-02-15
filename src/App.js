@@ -7,16 +7,19 @@ import Search from "./components/Search/Search";
 import DrawerButton from "./components/DrawerButton/DrawerButton";
 import './App.css';
 import {connect} from 'react-redux'
-import { writeLetter } from "./actions/mailCreators";
+import { writeLetter, topMenuToggle } from "./actions/mailCreators";
 import Drawer from "./components/Drawer/Drawer";
 
 
 class App extends Component {
+
    render() {
         const active = this.props.emails.active.substring(0,1).toLocaleUpperCase() + this.props.emails.active.substring(1)
-       const desktop = window.innerWidth > 710
+        const desktop = window.innerWidth > 710
+       const offsetLeft = desktop ? '10vw' : '0vw'
+
         return (
-            <Fragment>
+             <Fragment>
                 {!desktop && <div className="header">{active}</div>}
                 <DrawerButton/>
                 <Drawer/>
@@ -26,9 +29,9 @@ class App extends Component {
                 <Transition
                 native
                 items = {this.props.emails.writingLetter}
-                from = {{opacity: 1, position: 'absolute', left: '0vw', top: '0vh'}}
-                enter = {{opacity: 1, position: 'absolute', left: '0vw', top: '15vh'}}
-                leave = {{opacity: 0, position: 'absolute', left: '0vw', top: '0vh'}}
+                from = {{opacity: 1, position: 'absolute', left: offsetLeft, top: '0vh'}}
+                enter = {{opacity: 1, position: 'absolute', left: offsetLeft, top: '15vh'}}
+                leave = {{opacity: 0, position: 'absolute', left: offsetLeft, top: '0vh'}}
                 >
                     {show => show && (props =>(
                         <animated.div style ={props}>
@@ -59,6 +62,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
        writeLetter: (letter) => dispatch(writeLetter(letter)),
+        topMenuToggle: (open) => dispatch(topMenuToggle(open)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
