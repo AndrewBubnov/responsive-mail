@@ -3,22 +3,30 @@ import {Transition, animated} from 'react-spring'
 import './MailList.css'
 import Drawer from "../LetterDrawer/LetterDrawer";
 import {connect} from 'react-redux'
-import { deleteLetterGroup, groupCheck, setMail } from '../../actions/mailCreators'
+import { deleteLetterGroup, groupCheck, setMail, setWidth } from '../../actions/mailCreators'
 import SingleLetter from "./SingleLetter/SingleLetter";
 import Spinner from "../Spinner/Spinner";
-
+import Backdrop from '../Backdrop/Backdrop'
 
 
 class MailList extends Component {
 
+    resizeHandler = () => {
+        this.props.setWidth(window.innerWidth)
+    }
     componentDidMount() {
-        this.props.setMail(this.props.emails.mailList)
+        // this.props.setMail(this.props.emails.mailList)
+        window.addEventListener('resize', this.resizeHandler)
+    }
+    componentWillUnmount() {
+       window.removeEventListener('resize', this.resizeHandler)
     }
 
     render(){
-        const { mailList, active, drawerIsOpen, checkboxesArray, search, groupCheck, isFetching } = this.props.emails
 
+        const { mailList, active, drawerIsOpen, checkboxesArray, search, groupCheck, isFetching, width } = this.props.emails
         let currentMailList= null
+        const desktop = width > 710
         if (isFetching) {currentMailList = (
             <li>
                 <Spinner/>
@@ -32,9 +40,15 @@ class MailList extends Component {
             currentMailList = Array.from(set).map((item) => {
                 let letter = item.from || item.to
                 letter = letter + ' - ' + item.subject
-                if (window.innerWidth < 380 && letter.length > 31){
-                    letter = letter.substring(0, 29) + '...'
-                }
+
+
+                // if (width < 380 && letter.length > 33){
+                //     letter = letter.substring(0, 31) + '...'
+                // }
+
+                // else if (width >= 380 && width < 710 && letter.length > 45){
+                //     letter = letter.substring(0, 43) + '...'
+                // }
                 const index = letter.indexOf(search)
                 return (<li key={item.id}>
                             <SingleLetter letter={letter} index={index} item={item}/>
@@ -47,14 +61,15 @@ class MailList extends Component {
                 </li>
             )}
         }
-        const drawerOffset = window.innerWidth > 710 ? 50 : 0
+        const drawerOffset = desktop ? 50 : 0
 
         return (
             <Fragment>
+                {this.props.emails.topMenuOpen && <Backdrop/>}
                 <div className="mail-list">
-                    {window.innerWidth > 710 && mailList[active].length > 0 && <button onClick={() => this.props.deleteLetterGroup(this.props.emails, checkboxesArray)}
+                    {desktop && mailList[active].length > 0 && <button onClick={() => this.props.deleteLetterGroup(this.props.emails, checkboxesArray)}
                                                                                        className={checkboxesArray[active].length > 0 ? "delete-chosen chosen-active" : "delete-chosen"}>Delete</button>}
-                    {window.innerWidth > 710 && mailList[active].length > 0 && <input onChange={() => this.props.groupCheck(mailList, active, checkboxesArray, groupCheck)} checked={groupCheck}
+                    {desktop && mailList[active].length > 0 && <input onChange={() => this.props.groupCheck(mailList, active, checkboxesArray, groupCheck)} checked={groupCheck}
                                                                                       className="letter-checkbox group-checkbox" type="checkbox"/>}
 
                     <ul>
@@ -94,6 +109,7 @@ const mapDispatchToProps = (dispatch) => {
         deleteLetterGroup: (emails, itemList) => dispatch(deleteLetterGroup(emails, itemList)),
         groupCheck: (mailList, active, checkboxesArray, check) => dispatch(groupCheck(mailList, active, checkboxesArray, check)),
         setMail: (mailList) => dispatch(setMail(mailList)),
+        setWidth: (width) => dispatch(setWidth(width)),
     }
 }
 

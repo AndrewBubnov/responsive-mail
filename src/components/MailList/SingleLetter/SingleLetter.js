@@ -37,8 +37,6 @@ render() {
     const desktop = window.innerWidth > 710
     const style = this.state.back ? {transform: `translateX(${this.state.offset}px)`, transition: `transform .3s ease-in-out`} : {transform: `translateX(${this.state.offset}px)`}
 
-
-
     return (
         <div className="letter-wrapper">
 

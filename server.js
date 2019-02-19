@@ -24,7 +24,7 @@ app.post('/', (req, res) => {
         service: 'gmail',
         auth: {
             user: 'reactdevmail@gmail.com',
-            pass: 'acnot88_0175'
+            pass: ''
         }
     });
 
@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
 
     const mailListener = new MailListener({
         username: "reactdevmail@gmail.com",
-        password: "",
+        password: "acnot88_0175",
         host: "imap.gmail.com",
         port: 993,
         tls: true,

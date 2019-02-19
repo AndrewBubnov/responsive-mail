@@ -13,16 +13,17 @@ import Drawer from "./components/Drawer/Drawer";
 
 class App extends Component {
 
-   render() {
+    render() {
         const active = this.props.emails.active.substring(0,1).toLocaleUpperCase() + this.props.emails.active.substring(1)
         const desktop = window.innerWidth > 710
-       const offsetLeft = desktop ? '10vw' : '0vw'
+        const offsetLeft = desktop ? '10vw' : '0vw'
 
         return (
              <Fragment>
                 {!desktop && <div className="header">{active}</div>}
                 <DrawerButton/>
                 <Drawer/>
+
                 <button onClick={() => this.props.writeLetter(this.props.emails.newLetter, true)}
                         className="new-message-button">{window.innerWidth > 710 ? 'New letter' : '+'}</button>
 
@@ -61,7 +62,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       writeLetter: (letter) => dispatch(writeLetter(letter)),
+        writeLetter: (letter) => dispatch(writeLetter(letter)),
         topMenuToggle: (open) => dispatch(topMenuToggle(open)),
     }
 }

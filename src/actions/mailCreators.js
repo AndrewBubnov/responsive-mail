@@ -1,33 +1,32 @@
 import { WRITE_LETTER, CHANGE_FOLDER, LETTER_FIELD_FILL, LETTER_LIST, LETTER_SHOWN, CURRENT_LETTER, SET_FETCHING,
-    TEXT_SHOW, SET_UNREAD, DRAWER_OPEN, SET_DELAY, CHECKBOXES_HANDLE, SET_SEARCH, GROUP_CHECK, MENU_TOGGLE } from './mails'
+    TEXT_SHOW, SET_UNREAD, DRAWER_OPEN, SET_DELAY, CHECKBOXES_HANDLE, SET_SEARCH, GROUP_CHECK, MENU_TOGGLE, SET_WIDTH } from './mails'
 //***********************
 
-export const deleteLetter = (emails, itemList) => {
-    return (dispatch) => {
+export const deleteLetter = (emails, itemList) => dispatch => {
+
     const {mailList, active, checkboxesArray} = emails
     dispatch({type: LETTER_SHOWN, payload: false})
     dispatch(setDelay(500))
     dispatch({type: DRAWER_OPEN, payload: false})
     const newCurrentList = mailList[active].slice().filter(letter => !itemList.some(element => element.id === letter.id))
-    if (active === 'received'){
+    if (active === 'received') {
         dispatch(setUnRead(newCurrentList))
     }
-    if (active  !== 'deleted'){
+    if (active !== 'deleted') {
         let newDeleted = mailList['deleted'].slice()
         itemList.forEach(item => item.checked = false)
         newDeleted = newDeleted.concat(itemList)
         dispatch({type: LETTER_LIST, payload: {...mailList, [active]: newCurrentList, 'deleted': newDeleted}})
         dispatch({type: TEXT_SHOW, payload: 0})
-    } else{
+    } else {
         dispatch({type: LETTER_LIST, payload: {...mailList, [active]: newCurrentList}})
         dispatch({type: TEXT_SHOW, payload: 0})
     }
-    if (itemList.length === 1 && checkboxesArray[active].some(element => element.id === itemList[0].id)){
+    if (itemList.length === 1 && checkboxesArray[active].some(element => element.id === itemList[0].id)) {
         checkboxesArray[active].splice(checkboxesArray[active].indexOf(itemList[0]), 1)
         dispatch({type: CHECKBOXES_HANDLE, payload: checkboxesArray})
     }
     dispatch({type: GROUP_CHECK, payload: false})
-    }
 }
 //***********************
 
@@ -61,7 +60,7 @@ export const fillElement = (e, newLetter) => dispatch => {
 
 export const newLetterSend = (emails, realLetter) => dispatch => {
     const letter = emails.newLetter
-    const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (regexp.test(String(letter.to).toLowerCase())){
     if (letter.answered) {
         const newReceived = emails.mailList.received.map(item => {
@@ -228,6 +227,10 @@ export const setMail = (mailList) => dispatch => {
             dispatch(setUnRead(data))
         })
 }
+//********************************
 
+export const setWidth = (width) => dispatch => {
+    dispatch({type: SET_WIDTH, payload: width})
+}
 
 

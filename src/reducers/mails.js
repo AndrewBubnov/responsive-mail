@@ -1,54 +1,54 @@
 import { WRITE_LETTER, CHANGE_FOLDER, LETTER_FIELD_FILL, LETTER_LIST, LETTER_SHOWN, CURRENT_LETTER, SET_FETCHING,
-    TEXT_SHOW, SET_UNREAD, DRAWER_OPEN, SET_DELAY, CHECKBOXES_HANDLE, SET_SEARCH, GROUP_CHECK, MENU_TOGGLE } from '../actions/mails'
+    TEXT_SHOW, SET_UNREAD, DRAWER_OPEN, SET_DELAY, CHECKBOXES_HANDLE, SET_SEARCH, GROUP_CHECK, MENU_TOGGLE, SET_WIDTH } from '../actions/mails'
 
 const initialState = {
     active: 'received',
     mailList: {
-        // received: [
-        //     {
-        //         id: 1513375200000,
-        //         status: false,
-        //         answered: false,
-        //         checked: false,
-        //         from: 'admin@reactjs.org',
-        //         to: '',
-        //         subject: 'Try React and send us reply!',
-        //         text: 'React - JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.' +
-        //             'React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.' +
-        //             ' React может использоваться для разработки одностраничных и мобильных приложений. Его цель — предоставить высокую ' +
-        //             'скорость, простоту и масштабируемость. В качестве библиотеки для разработки пользовательских интерфейсов React ' +
-        //             'часто используется с другими библиотеками, такими как Redux.'
-        //     },
-        //     {
-        //         id: 1521324000000,
-        //         status: false,
-        //         answered: false,
-        //         checked: false,
-        //         from: 'admin@vuejs.org',
-        //         to: '',
-        //         subject: 'Try Vue!',
-        //         text:'Vue.js — JavaScript-фреймворк с открытым исходным кодом для создания пользовательских интерфейсов. ' +
-        //             'Легко интегрируется в проекты с использованием других JavaScript-библиотек. Может функционировать' +
-        //             ' как веб-фреймворк для разработки одностраничных приложений в реактивном стиле.'
-        //     },
-        //     {
-        //         id: 1469998800000,
-        //         status: false,
-        //         answered: false,
-        //         checked: false,
-        //         from: 'admin@angularjs.org',
-        //         to: '',
-        //         subject: 'Try Angular!',
-        //         text: 'AngularJS — JavaScript-фреймворк с открытым исходным кодом. Предназначен для разработки ' +
-        //             'одностраничных приложений. Его цель — расширение браузерных приложений на основе MVC-шаблона' +
-        //             ' а также упрощение тестирования и разработки. Фреймворк работает с HTML, содержащим дополнительные' +
-        //             ' пользовательские атрибуты, которые описываются директивами, и связывает ввод или вывод области' +
-        //             ' страницы с моделью, представляющей собой обычные переменные JavaScript. Значения этих переменных' +
-        //             ' задаются вручную или извлекаются из статических или динамических JSON-данных.'
-        //
-        //     },
-        // ],
-        received: [],
+        received: [
+            {
+                id: 1513375200000,
+                status: false,
+                answered: false,
+                checked: false,
+                from: 'admin@reactjs.org',
+                to: '',
+                subject: 'Try React and send us reply!',
+                text: 'React - JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.' +
+                    'React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.' +
+                    ' React может использоваться для разработки одностраничных и мобильных приложений. Его цель — предоставить высокую ' +
+                    'скорость, простоту и масштабируемость. В качестве библиотеки для разработки пользовательских интерфейсов React ' +
+                    'часто используется с другими библиотеками, такими как Redux.'
+            },
+            {
+                id: 1521324000000,
+                status: false,
+                answered: false,
+                checked: false,
+                from: 'admin@vuejs.org',
+                to: '',
+                subject: 'Try Vue!',
+                text:'Vue.js — JavaScript-фреймворк с открытым исходным кодом для создания пользовательских интерфейсов. ' +
+                    'Легко интегрируется в проекты с использованием других JavaScript-библиотек. Может функционировать' +
+                    ' как веб-фреймворк для разработки одностраничных приложений в реактивном стиле.'
+            },
+            {
+                id: 1469998800000,
+                status: false,
+                answered: false,
+                checked: false,
+                from: 'admin@angularjs.org',
+                to: '',
+                subject: 'Try Angular!',
+                text: 'AngularJS — JavaScript-фреймворк с открытым исходным кодом. Предназначен для разработки ' +
+                    'одностраничных приложений. Его цель — расширение браузерных приложений на основе MVC-шаблона' +
+                    ' а также упрощение тестирования и разработки. Фреймворк работает с HTML, содержащим дополнительные' +
+                    ' пользовательские атрибуты, которые описываются директивами, и связывает ввод или вывод области' +
+                    ' страницы с моделью, представляющей собой обычные переменные JavaScript. Значения этих переменных' +
+                    ' задаются вручную или извлекаются из статических или динамических JSON-данных.'
+
+            },
+        ],
+        // received: [],
         sent: [
             {
                 id: 1540850400000,
@@ -117,6 +117,7 @@ const initialState = {
     topMenuOpen: false,
     invalid: false,
     isFetching: false,
+    width: window.innerWidth,
 }
 
 function mails (state = initialState, action) {
@@ -151,6 +152,8 @@ function mails (state = initialState, action) {
             return {...state, topMenuOpen: action.payload}
         case SET_FETCHING:
             return {...state, isFetching: action.payload}
+        case SET_WIDTH:
+            return {...state, width: action.payload}
 
         default:
             return {...state}
