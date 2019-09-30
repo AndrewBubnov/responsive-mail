@@ -15,7 +15,7 @@ class MailList extends Component {
         this.props.setWidth(window.innerWidth)
     }
     componentDidMount() {
-        // this.props.setMail(this.props.emails.mailList)
+        this.props.setMail(this.props.emails.mailList)
         window.addEventListener('resize', this.resizeHandler)
     }
     componentWillUnmount() {
@@ -41,14 +41,6 @@ class MailList extends Component {
                 let letter = item.from || item.to
                 letter = letter + ' - ' + item.subject
 
-
-                // if (width < 380 && letter.length > 33){
-                //     letter = letter.substring(0, 31) + '...'
-                // }
-
-                // else if (width >= 380 && width < 710 && letter.length > 45){
-                //     letter = letter.substring(0, 43) + '...'
-                // }
                 const index = letter.indexOf(search)
                 return (<li key={item.id}>
                             <SingleLetter letter={letter} index={index} item={item}/>

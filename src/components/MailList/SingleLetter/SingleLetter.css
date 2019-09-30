@@ -12,8 +12,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden;
-    white-space: nowrap;
 }
 .letter-wrapper{
     display: flex;
@@ -22,7 +20,7 @@
 .letter-line{
     display: flex;
     align-items: center;
-    width: calc(100% - 0px);
+    width: calc(100% - 10px);
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -73,7 +71,7 @@
     margin-right: 10px;
 }
 .icon-answered{
-    background: url("../img/recycle1.svg") center center no-repeat;
+    background: url("../img/recycle.svg") center center no-repeat;
 }
 
 .delete-letter-button{
@@ -100,7 +98,6 @@
         border-right: none;
         border-top: none;
         max-height: 50px;
-
     }
     .letter-name{
         font-size: 16px;

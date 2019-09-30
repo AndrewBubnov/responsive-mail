@@ -1,5 +1,6 @@
 import { WRITE_LETTER, CHANGE_FOLDER, LETTER_FIELD_FILL, LETTER_LIST, LETTER_SHOWN, CURRENT_LETTER, SET_FETCHING,
     TEXT_SHOW, SET_UNREAD, DRAWER_OPEN, SET_DELAY, CHECKBOXES_HANDLE, SET_SEARCH, GROUP_CHECK, MENU_TOGGLE, SET_WIDTH } from './mails'
+import axios from 'axios'
 //***********************
 
 export const deleteLetter = (emails, itemList) => dispatch => {
@@ -84,14 +85,8 @@ export const newLetterSend = (emails, realLetter) => dispatch => {
                 subject: letter.subject,
                 text: letter.text,
             };
-            fetch(`http://localhost:3000/`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(object)
-            })
+            axios.post(`/api`, object)
+
 
         }
     }
@@ -219,12 +214,11 @@ export const topMenuToggle = (topMenuOpen) => dispatch => {
 
 export const setMail = (mailList) => dispatch => {
     dispatch({type: SET_FETCHING, payload: true})
-    fetch(`http://localhost:3000/api/`)
-        .then(result => result.json())
-        .then(data => {
-            dispatch({type: LETTER_LIST, payload: {...mailList, 'received': data}})
+    axios.get(`/api/`)
+        .then(response => {
+            dispatch({type: LETTER_LIST, payload: {...mailList, 'received': response.data}})
             dispatch({type: SET_FETCHING, payload: false})
-            dispatch(setUnRead(data))
+            dispatch(setUnRead(response.data))
         })
 }
 //********************************

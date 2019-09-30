@@ -2,29 +2,26 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 5000;
 const MailListener = require("mail-listener2");
-
+const cors = require ('cors')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(cors())
 
 //***********************************************************************************
 app.use(express.static(__dirname + '/build/'));
 //***********************************************************************************
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/build/');
 
-});
 
-app.post('/', (req, res) => {
+app.post('/api', (req, res) => {
     const { to, subject, text } = req.body
     const from = 'reactdevmail@gmail.com'
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
             user: 'reactdevmail@gmail.com',
-            pass: ''
+            pass: 'acnot88_0175'
         }
     });
 
@@ -38,7 +35,7 @@ app.post('/', (req, res) => {
 
     const mailListener = new MailListener({
         username: "reactdevmail@gmail.com",
-        password: "acnot88_0175",
+        password: "***********",                    //password has to be here
         host: "imap.gmail.com",
         port: 993,
         tls: true,
@@ -54,7 +51,10 @@ app.post('/', (req, res) => {
     });
     const array = []
 
-    mailListener.on("mail", function(mail){
+    mailListener.on("error", (error) => console.log(error))
+
+
+    mailListener.on("mail", mail => {
         array.push({id: new Date(mail.date).getTime(), from: mail.from[0].address, subject: mail.subject, text:mail.text.replace(/\n/gi, ' '), status: false,
             answered: false, checked: false, to: '',})
         app.get('/api/', (req, res) => {

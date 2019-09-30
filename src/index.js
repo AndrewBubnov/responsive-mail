@@ -10,8 +10,9 @@ import store from "./store";
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
-// if('serviceWorker' in navigator) {
-//
-//     navigator.serviceWorker.register('sw.js')
-//         .then(function() { console.log("Service worker registered"); });
-// }
+if('serviceWorker' in navigator) {
+
+    navigator.serviceWorker.register('../sw.js')
+        .then(function() { console.log("Service worker registered")})
+        .catch(() => console.log('Service worker is not registered'))
+}
