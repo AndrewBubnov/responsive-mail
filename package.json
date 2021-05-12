@@ -9,7 +9,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mail-listener2": "^0.3.1",
-    "nodemailer": "^5.1.1",
+    "nodemailer": "^6.4.16",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
